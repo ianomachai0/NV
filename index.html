@@ -21,15 +21,15 @@
             background-color: #F7F9FB;
             color: #333;
             line-height: 1.6;
-            font-size: 14px; /* Reduzido ligeiramente */
+            font-size: clamp(12px, 2.5vw, 14px);
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            margin-left: 1.5rem;
-            margin-right: 1.5rem;
+            padding: 15px;
+            margin-left: 1rem;
+            margin-right: 1rem;
         }
         
         header {
@@ -56,7 +56,7 @@
         }
         
         .header-title {
-            font-size: 17px; /* Reduzido de 18px */
+            font-size: clamp(14px, 3.5vw, 17px);
             font-weight: 600;
             color: #0F4C5C;
         }
@@ -84,12 +84,12 @@
             display: flex;
             align-items: center;
             white-space: nowrap;
-            font-size: 14px; /* Reduzido */
+            font-size: clamp(11px, 2.8vw, 14px);
         }
 
         .countdown-timer {
             font-weight: 700;
-            font-size: 18px; /* Reduzido de 20px */
+            font-size: clamp(14px, 3.5vw, 18px);
             background: rgba(255, 255, 255, 0.2);
             padding: 5px 12px;
             border-radius: 8px;
@@ -173,7 +173,7 @@
         }
         
         .product-title {
-            font-size: 20px; /* Reduzido de 22px */
+            font-size: clamp(16px, 4vw, 20px);
             font-weight: 600;
             margin-bottom: 10px;
             color: #222;
@@ -186,7 +186,7 @@
         }
         
         .product-price {
-            font-size: 22px; /* Reduzido de 24px */
+            font-size: clamp(18px, 4.5vw, 22px);
             font-weight: 700;
             color: #0F4C5C;
         }
@@ -261,8 +261,8 @@
         }
         
         .payment-logo {
-            width: 320px; /* Redobre o tamanho */
-            height: 200px; /* Redobre o tamanho */
+            width: clamp(80px, 15vw, 120px);
+            height: clamp(50px, 10vw, 80px);
             margin: 0 auto 10px;
             display: flex;
             align-items: center;
@@ -434,27 +434,72 @@
         
         /* Responsividade */
         @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            
             .product-section {
                 flex-direction: column;
+                padding: 15px;
             }
             
             .product-image {
                 width: 100%;
+                height: 200px;
                 margin-right: 0;
-                margin-bottom: 20px;
+                margin-bottom: 15px;
             }
             
             .payment-methods {
                 flex-direction: column;
+                gap: 10px;
+            }
+            
+            .payment-method {
+                padding: 10px;
             }
             
             .countdown-container {
                 flex-direction: column;
-                gap: 10px;
+                gap: 8px;
+                padding: 10px;
             }
             
-            .header-title {
-                font-size: 15px; /* Reduzido para mobile */
+            .form-section {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+                margin-left: 0.25rem;
+                margin-right: 0.25rem;
+            }
+            
+            .product-section {
+                padding: 10px;
+            }
+            
+            .form-section {
+                padding: 10px;
+            }
+            
+            .payment-logo {
+                width: clamp(60px, 20vw, 80px);
+                height: clamp(40px, 15vw, 60px);
+            }
+            
+            input {
+                padding: 10px;
+                font-size: clamp(12px, 3vw, 14px);
+            }
+            
+            .btn-checkout {
+                padding: 12px;
+                font-size: clamp(13px, 3.5vw, 15px);
             }
         }
         
@@ -1029,4 +1074,4 @@
         });
     </script>
 </body>
-</html>
+</htmlml></html>
