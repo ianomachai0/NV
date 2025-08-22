@@ -57,19 +57,68 @@
         }
         
         /* Contador de urgência */
-        .countdown-container {
-            background: linear-gradient(135deg, #0F4C5C 0%, #56C596 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(15, 76, 92, 0.2);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: pulse-urgent 1s infinite alternate;
-        }
+.countdown-container {
+    background: linear-gradient(135deg, #0F4C5C 0%, #56C596 100%);
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(15, 76, 92, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulse-urgent 1s infinite alternate;
+    flex-wrap: nowrap; /* Impede quebra de linha */
+    white-space: nowrap; /* Impede quebra de texto */
+}
+
+.countdown-text {
+    font-weight: 500;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Garante que o texto não quebre */
+}
+
+.countdown-timer {
+    font-weight: 700;
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 8px;
+    margin-left: 8px; /* Espaço entre o texto e o timer */
+    display: inline-block; /* Mantém na mesma linha */
+    white-space: nowrap; /* Impede quebra do timer */
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .countdown-container {
+        padding: 12px 8px; /* Reduz padding lateral */
+    }
+    
+    .countdown-text {
+        font-size: 14px; /* Reduz ligeiramente a fonte */
+    }
+    
+    .countdown-timer {
+        font-size: 18px; /* Reduz ligeiramente a fonte */
+        padding: 4px 10px; /* Reduz o padding */
+    }
+}
+
+/* Ajustes para telas extremamente pequenas */
+@media (max-width: 360px) {
+    .countdown-text {
+        font-size: 13px; /* Reduz ainda mais a fonte */
+    }
+    
+    .countdown-timer {
+        font-size: 16px; /* Reduz ainda mais a fonte */
+        padding: 3px 8px; /* Reduz ainda mais o padding */
+    }
+}
         
         @keyframes pulse-urgent {
             0% { background: linear-gradient(135deg, red 0%, red 100%); }
@@ -600,8 +649,10 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
 
         <!-- Contador de urgência -->
         <div class="countdown-container" id="countdown-container">
-            <div class="countdown-text">Oferta especial expira em:</div>
-            <div class="countdown-timer" id="countdown-timer">08:26</div>
+            <div class="countdown-text">Oferta especial expira em:
+                        <div class="countdown-timer" id="countdown-timer">08:26</div>
+            </div>
+
         </div>
         
         <main>
@@ -960,4 +1011,4 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
         });
     </script>
 </body>
-                            </html>
+</html>
