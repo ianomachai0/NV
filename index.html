@@ -713,7 +713,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
                     </div>
                     
                     <button class="btn-checkout" id="checkout-btn">
-                        <i class="fas fa-lock"></i> Finalizar Compra com Segurança
+                        <i class="fas fa-lock"></i> Pagar - <span id="checkout-price">- MZN</span>
                     </button>
                     
                     <div class="security-note">
@@ -775,6 +775,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
             const productDescription = document.querySelector('.product-description');
             const productPrice = document.querySelector('.product-price');
             const productImage = document.querySelector('.product-image');
+            const checkoutPrice = document.getElementById('checkout-price');
             
             const checkoutBtn = document.getElementById('checkout-btn');
             const paymentMethods = document.querySelectorAll('.payment-method');
@@ -895,6 +896,9 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
                 productDescription.textContent = product.description || 'Descrição não disponível';
                 productPrice.textContent = formatPrice(product.price) + ' MZN';
                 
+                // Atualizar também o preço no botão de checkout
+                checkoutPrice.textContent = formatPrice(product.price) + ' MZN';
+                
                 if (product.image) {
                     productImage.innerHTML = '';
                     const img = document.createElement('img');
@@ -1000,7 +1004,7 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
             }
             
             function resetCheckoutButton() {
-                checkoutBtn.innerHTML = '<i class="fas fa-lock"></i> Finalizar Compra com Segurança';
+                checkoutBtn.innerHTML = '<i class="fas fa-lock"></i> Pagar - <span id="checkout-price">' + formatPrice(productData.price) + ' MZN</span>';
                 checkoutBtn.disabled = false;
             }
             
