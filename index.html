@@ -511,15 +511,32 @@ footer p {
         font-size: 14px;
     }
     
-    .security-note {
+    .security-ote {
         flex-direction: column;
         gap: 8px;
         text-align: center;
     }
     
-    .security-note i {
+    .security-ote i {
         margin-right: 0;
     }
+}
+
+.security-ote {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.security-ote i {
+    color: #28a745; /* Verde */
+    font-size: 16px;
+}
+
+.security-ote span {
+    white-space: nowrap;
 }
 
     </style>
@@ -530,7 +547,7 @@ footer p {
             <div class="logo">NV</div>
             <div class="header-title">Checkout Seguro</div>
         </header>
-        
+
         <!-- Contador de urgência -->
         <div class="countdown-container" id="countdown-container">
             <div class="countdown-text">Oferta especial expira em:</div>
@@ -538,8 +555,20 @@ footer p {
         </div>
         
         <main>
+
             <div class="checkout-card">
+            
+            
+
+            
                 <div class="product-section">
+                    
+                    <div class="security-ote">
+    <!-- Ícone de segurança -->
+   <span> <i class="fas fa-shield-alt"></i>
+    <!-- Texto e bandeira mantidos juntos -->
+    Pagamento 100% seguro <img src="https://flagcdn.com/16x12/pt.png" alt="PT" style="margin-left:5px; vertical-align:middle;"> - PT</span>
+</div>
                     <div class="product-image">
                         <i class="fas fa-image"></i>
                     </div>
@@ -604,16 +633,7 @@ footer p {
         <img src="img/logo.svg" alt="GJ Checkout Logo" class="footer-logo">
         <p>© 2025 NV Checkout - Todos os direitos reservados</p>
     </div>
- <div class="security-note">
-    <!-- Ícone de segurança -->
-    <i class="fas fa-shield-alt"></i>
-    <!-- Texto alterado -->
-    <span>Pagamento 100% seguro</span>
-    <!-- Bandeira de Portugal -->
-    <img src="https://flagcdn.com/16x12/pt.png" alt="PT" style="margin-left:5px; vertical-align:middle;">
-    <!-- Texto PT -->
-    <span>-PT</span>
-</div>
+
 </footer>
     </div>
     
@@ -896,4 +916,4 @@ footer p {
         });
     </script>
 </body>
-  </html>
+</html>
