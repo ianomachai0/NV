@@ -1,0 +1,1032 @@
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NV Pagamento Seguro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #F7F9FB;
+            color: #333;
+            line-height: 1.6;
+            font-size: 14px; /* Reduzido ligeiramente */
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-left: 1.5rem;
+            margin-right: 1.5rem;
+        }
+        
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #0F4C5C;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .header-title {
+            font-size: 17px; /* Reduzido de 18px */
+            font-weight: 600;
+            color: #0F4C5C;
+        }
+        
+        /* Contador de urgência */
+        .countdown-container {
+            background: linear-gradient(135deg, #0F4C5C 0%, #56C596 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(15, 76, 92, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse-urgent 1s infinite alternate;
+            flex-wrap: nowrap;
+            white-space: nowrap;
+        }
+
+        .countdown-text {
+            font-weight: 500;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-size: 14px; /* Reduzido */
+        }
+
+        .countdown-timer {
+            font-weight: 700;
+            font-size: 18px; /* Reduzido de 20px */
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 12px;
+            border-radius: 8px;
+            margin-left: 8px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .countdown-container {
+                padding: 12px 8px;
+            }
+            
+            .countdown-text {
+                font-size: 12px; /* Reduzido */
+            }
+            
+            .countdown-timer {
+                font-size: 16px; /* Reduzido */
+                padding: 4px 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .countdown-text {
+                font-size: 11px; /* Reduzido */
+            }
+            
+            .countdown-timer {
+                font-size: 14px; /* Reduzido */
+                padding: 3px 8px;
+            }
+        }
+        
+        @keyframes pulse-urgent {
+            0% { background: linear-gradient(135deg, red 0%, red 100%); }
+            100% { background: linear-gradient(135deg, red 0%, red 100%); }
+        }
+        
+        .countdown-expired {
+            background: #E74C3C;
+            animation: none;
+        }
+        
+        .checkout-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.01); }
+            100% { transform: scale(1); }
+        }
+        
+        .product-section {
+            display: flex;
+            padding: 25px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .product-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 25px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-title {
+            font-size: 20px; /* Reduzido de 22px */
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #222;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px; /* Reduzido de 15px */
+        }
+        
+        .product-price {
+            font-size: 22px; /* Reduzido de 24px */
+            font-weight: 700;
+            color: #0F4C5C;
+        }
+        
+        .form-section {
+            padding: 25px;
+        }
+        
+        .section-title {
+            font-size: 17px; /* Reduzido de 18px */
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #0F4C5C;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+            font-size: 14px; /* Reduzido */
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px; /* Reduzido de 15px */
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #0F4C5C;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(15, 76, 92, 0.1);
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .payment-method {
+            flex: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .payment-method:hover {
+            border-color: #0F4C5C;
+        }
+        
+        .payment-method.selected {
+            border-color: #0F4C5C;
+            background-color: rgba(15, 76, 92, 0.05);
+        }
+        
+        .payment-logo {
+            width: 320px; /* Redobre o tamanho */
+            height: 200px; /* Redobre o tamanho */
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .payment-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .payment-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 14px; /* Reduzido */
+        }
+        
+        .payment-desc {
+            font-size: 12px; /* Reduzido de 13px */
+            color: #666;
+        }
+        
+        .btn-checkout {
+            background-color: #56C596;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 15px; /* Reduzido de 16px */
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-checkout i {
+            margin-right: 10px;
+        }
+        
+        .btn-checkout:hover {
+            background-color: #45b083;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: #666;
+            font-size: 13px; /* Reduzido de 14px */
+        }
+        
+        .security-note {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            color: #666;
+            font-size: 13px; /* Reduzido de 14px */
+        }
+        
+        .security-note i {
+            margin-right: 8px;
+            color: #56C596;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 450px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 18px; /* Reduzido de 20px */
+            font-weight: 600;
+            color: #0F4C5C;
+        }
+        
+        .modal-close {
+            margin-left: auto;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .modal-body {
+            margin-bottom: 25px;
+        }
+        
+        .modal-text {
+            margin-bottom: 15px;
+            color: #444;
+            font-size: 14px; /* Reduzido */
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 14px; /* Reduzido */
+        }
+        
+        .modal-btn-cancel {
+            background: #f5f5f5;
+            color: #444;
+            border: 1px solid #ddd;
+        }
+        
+        .modal-btn-confirm {
+            background: #0F4C5C;
+            color: white;
+            border: none;
+        }
+        
+        .phone-error {
+            color: #e74c3c;
+            font-size: 12px; /* Reduzido */
+            margin-top: 5px;
+            display: none;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .product-section {
+                flex-direction: column;
+            }
+            
+            .product-image {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+            
+            .countdown-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .header-title {
+                font-size: 15px; /* Reduzido para mobile */
+            }
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Footer com logo */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #666;
+            font-size: 15px; /* Reduzido de 16px */
+            border-top: 1px solid #e0e0e0;
+            margin-top: 40px;
+            background-color: #f9f9f9;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            height: 120px;
+            width: auto;
+            opacity: 0.9;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        .footer-logo:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        footer p {
+            margin: 0;
+            font-weight: 500;
+            color: #0F4C5C;
+        }
+
+        .security-ote {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px; /* Reduzido de 14px */
+            font-weight: 500;
+        }
+
+        .security-ote i {
+            color: #28a745;
+            font-size: 26px; /* Reduzido de 28px */
+            margin-right: 5px;
+        }
+
+        .security-ote span {
+            white-space: nowrap;
+            color: #0F4C5C;
+        }
+
+        /* Responsividade para o footer */
+        @media (max-width: 768px) {
+            footer {
+                padding: 25px 0;
+            }
+            
+            .footer-content {
+                gap: 15px;
+            }
+            
+            .footer-logo {
+                height: 100px;
+            }
+            
+            footer p {
+                font-size: 14px; /* Reduzido */
+            }
+            
+            .security-note {
+                font-size: 12px; /* Reduzido */
+                padding: 12px;
+                margin-top: 15px;
+            }
+            
+            .security-ote {
+                font-size: 12px; /* Reduzido */
+            }
+            
+            .security-ote i {
+                font-size: 22px; /* Reduzido */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-logo {
+                height: 80px;
+            }
+            
+            footer p {
+                font-size: 13px; /* Reduzido */
+            }
+        }
+    </style>
+    <!-- Facebook Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1472808553924810');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+    src="https://www.facebook.com/tr?id=1472808553924810&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="security-ote">
+                <div class="header-title">
+                    <span> <i class="fas fa-shield-alt"></i>
+                        Pagamento 100% seguro <img src="https://flagcdn.com/16x12/pt.png" alt="PT" style="margin-left:5px; vertical-align:middle;"> - PT</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contador de urgência -->
+        <div class="countdown-container" id="countdown-container">
+            <div class="countdown-text">Oferta especial expira em:
+                <div class="countdown-timer" id="countdown-timer">08:26</div>
+            </div>
+        </div>
+        
+        <main>
+            <div class="checkout-card">
+                <div class="product-section">
+                    <div class="product-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="product-info">
+                        <h1 class="product-title">Carregando produto...</h1>
+                        <p class="product-description">Aguarde enquanto carregamos as informações do produto.</p>
+                        <div class="product-price">- MZN</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Informações</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Nome completo</label>
+                        <input type="text" id="name" placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="Digite seu e-mail">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefone (formato: 84####### | 87#######)</label>
+                        <input type="tel" id="phone" placeholder="Ex: 841234567" maxlength="9">
+                        <div class="phone-error" id="phone-error">Formato inválido. Use o formato correto para o método selecionado.</div>
+                    </div>
+                    
+                    <h2 class="section-title"><i class="fas fa-credit-card"></i> Método de pagamento</h2>
+                    
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="mpesa">
+                            <div class="payment-logo">
+                                <img src="img/mpesa.svg" alt="Mpesa">
+                            </div>
+                            <div class="payment-name">Mpesa</div>
+                            <div class="payment-desc">84##### | 85#####</div>
+                        </div>
+                        
+                        <div class="payment-method" data-method="emola">
+                            <div class="payment-logo">
+                                <img src="img/emola.svg" alt="Emola">
+                            </div>
+                            <div class="payment-name">Emola</div>
+                            <div class="payment-desc">86##### | 87#####</div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-checkout" id="checkout-btn">
+                        <i class="fas fa-lock"></i> Pagar - <span id="checkout-price">- MZN</span>
+                    </button>
+                    
+                    <div class="security-note">
+                        <i class="fas fa-shield-alt"></i> Seus dados estão protegidos com criptografia avançada
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <img src="img/logo.svg" alt="GJ Checkout Logo" class="footer-logo">
+                <p>© 2025 NV Checkout - Todos os direitos reservados</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Modal para número de telefone -->
+    <div class="modal-overlay" id="phone-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirmação de pagamento</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">Para processar seu pagamento via <span id="payment-method-name">Mpesa</span>, confirme seu número:</p>
+                <div class="form-group">
+                    <input type="tel" id="modal-phone" placeholder="Digite seu número de telefone" maxlength="9">
+                    <div class="phone-error" id="modal-phone-error">Número inválido para o método selecionado.</div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-cancel">Cancelar</button>
+                <button class="modal-btn modal-btn-confirm">Confirmar</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para mensagens -->
+    <div class="modal-overlay" id="message-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Atenção</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text" id="message-text">Mensagem de exemplo</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-confirm">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos da interface
+            const productTitle = document.querySelector('.product-title');
+            const productDescription = document.querySelector('.product-description');
+            const productPrice = document.querySelector('.product-price');
+            const productImage = document.querySelector('.product-image');
+            const checkoutPrice = document.getElementById('checkout-price');
+            
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            const modalPhoneError = document.getElementById('modal-phone-error');
+            
+            const phoneModal = document.getElementById('phone-modal');
+            const messageModal = document.getElementById('message-modal');
+            const messageText = document.getElementById('message-text');
+            const paymentMethodName = document.getElementById('payment-method-name');
+            const modalPhoneInput = document.getElementById('modal-phone');
+            
+            const modalCloseButtons = document.querySelectorAll('.modal-close');
+            const cancelButton = document.querySelector('.modal-btn-cancel');
+            const confirmButton = document.querySelector('.modal-btn-confirm');
+            const okButton = messageModal.querySelector('.modal-btn-confirm');
+            
+            // Elementos da contagem regressiva
+            const countdownContainer = document.getElementById('countdown-container');
+            const countdownTimer = document.getElementById('countdown-timer');
+            
+            // Variáveis de estado
+            let selectedPaymentMethod = null;
+            let productId = null;
+            let productData = null;
+            let countdownInterval = null;
+            
+            // Inicializar a contagem regressiva (8 minutos e 26 segundos)
+            let timeLeft = 8 * 60 + 26;
+            
+            // Obter ID do produto da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            productId = urlParams.get('id');
+            
+            // Iniciar a contagem regressiva imediatamente
+            startCountdown();
+            
+            // Carregar dados do produto
+            if (productId) {
+                fetchProductData();
+            } else {
+                showMessage('Erro: ID do produto não encontrado na URL.');
+            }
+            
+            // Função para validar número de telefone
+            function validatePhoneNumber(phone, method) {
+                if (!phone || phone.length !== 9) return false;
+                
+                const prefix = phone.substring(0, 2);
+                
+                if (method === 'mpesa') {
+                    return prefix === '84' || prefix === '85';
+                } else if (method === 'emola') {
+                    return prefix === '86' || prefix === '87';
+                }
+                
+                return false;
+            }
+            
+            // Event Listeners
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', () => {
+                    paymentMethods.forEach(m => m.classList.remove('selected'));
+                    method.classList.add('selected');
+                    selectedPaymentMethod = method.dataset.method;
+                    
+                    // Validar telefone quando trocar método
+                    validateCurrentPhone();
+                });
+            });
+            
+            phoneInput.addEventListener('input', function(e) {
+                // Permitir apenas números
+                e.target.value = e.target.value.replace(/\D/g, '');
+                validateCurrentPhone();
+            });
+            
+            modalPhoneInput.addEventListener('input', function(e) {
+                // Permitir apenas números
+                e.target.value = e.target.value.replace(/\D/g, '');
+                validateModalPhone();
+            });
+            
+            function validateCurrentPhone() {
+                const phone = phoneInput.value;
+                if (phone && selectedPaymentMethod) {
+                    if (!validatePhoneNumber(phone, selectedPaymentMethod)) {
+                        phoneError.style.display = 'block';
+                        phoneError.textContent = getPhoneErrorMessage(selectedPaymentMethod);
+                    } else {
+                        phoneError.style.display = 'none';
+                    }
+                } else {
+                    phoneError.style.display = 'none';
+                }
+            }
+            
+            function validateModalPhone() {
+                const phone = modalPhoneInput.value;
+                if (phone && selectedPaymentMethod) {
+                    if (!validatePhoneNumber(phone, selectedPaymentMethod)) {
+                        modalPhoneError.style.display = 'block';
+                        modalPhoneError.textContent = getPhoneErrorMessage(selectedPaymentMethod);
+                    } else {
+                        modalPhoneError.style.display = 'none';
+                    }
+                } else {
+                    modalPhoneError.style.display = 'none';
+                }
+            }
+            
+            function getPhoneErrorMessage(method) {
+                if (method === 'mpesa') {
+                    return 'Para Mpesa, use números que começam com 84 ou 85';
+                } else if (method === 'emola') {
+                    return 'Para Emola, use números que começam com 86 ou 87';
+                }
+                return 'Formato de número inválido';
+            }
+            
+            checkoutBtn.addEventListener('click', initiateCheckout);
+            
+            modalCloseButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    phoneModal.classList.remove('active');
+                    messageModal.classList.remove('active');
+                });
+            });
+            
+            cancelButton.addEventListener('click', () => {
+                phoneModal.classList.remove('active');
+            });
+            
+            confirmButton.addEventListener('click', processPayment);
+            
+            okButton.addEventListener('click', () => {
+                messageModal.classList.remove('active');
+            });
+            
+            // Funções
+            function startCountdown() {
+                updateCountdownDisplay();
+                
+                countdownInterval = setInterval(() => {
+                    timeLeft--;
+                    updateCountdownDisplay();
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        countdownContainer.classList.add('countdown-expired');
+                        countdownTimer.textContent = 'Oferta expirou!';
+                        countdownContainer.style.animation = 'none';
+                    }
+                }, 1000);
+            }
+            
+            function updateCountdownDisplay() {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                countdownTimer.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+            
+            function fetchProductData() {
+                fetch(`api.php?action=getProduct&id=${productId}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erro ao carregar produto');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.status === 'success') {
+                            productData = data.data;
+                            displayProduct(data.data);
+                        } else {
+                            throw new Error(data.message || 'Erro ao carregar produto');
+                        }
+                    })
+                    .catch(error => {
+                        showMessage('Erro ao carregar informações do produto: ' + error.message);
+                    });
+            }
+            
+            function displayProduct(product) {
+                productTitle.textContent = product.name || 'Produto sem nome';
+                productDescription.textContent = product.description || 'Descrição não disponível';
+                productPrice.textContent = formatPrice(product.price) + ' MZN';
+                checkoutPrice.textContent = formatPrice(product.price) + ' MZN';
+                
+                if (product.image) {
+                    productImage.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = product.image;
+                    img.alt = product.name;
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '10px';
+                    productImage.appendChild(img);
+                }
+            }
+            
+            function formatPrice(price) {
+                if (!price) return '0,00';
+                return Number(price).toLocaleString('pt-MZ', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            }
+            
+            function initiateCheckout() {
+                // Validar dados do formulário
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = phoneInput.value.trim();
+                
+                if (!name || !email || !phone) {
+                    showMessage('Por favor, preencha todos os campos obrigatórios.');
+                    return;
+                }
+                
+                if (!selectedPaymentMethod) {
+                    showMessage('Por favor, selecione um método de pagamento.');
+                    return;
+                }
+                
+                // Validar formato do telefone
+                if (!validatePhoneNumber(phone, selectedPaymentMethod)) {
+                    showMessage(getPhoneErrorMessage(selectedPaymentMethod));
+                    return;
+                }
+                
+                // Pedir confirmação do número
+                paymentMethodName.textContent = selectedPaymentMethod.charAt(0).toUpperCase() + selectedPaymentMethod.slice(1);
+                modalPhoneInput.value = phone;
+                phoneModal.classList.add('active');
+            }
+            
+            function processPayment() {
+                const name = document.getElementById('name').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = phoneInput.value.trim();
+                const paymentPhone = modalPhoneInput.value.trim();
+                
+                // Validar número de telefone no modal
+                if (!validatePhoneNumber(paymentPhone, selectedPaymentMethod)) {
+                    modalPhoneError.style.display = 'block';
+                    modalPhoneError.textContent = getPhoneErrorMessage(selectedPaymentMethod);
+                    return;
+                }
+                
+                phoneModal.classList.remove('active');
+                
+                // Mostrar loading no botão
+                checkoutBtn.innerHTML = '<i class="fas fa-lock"></i> Processando pagamento <span class="loading"></span>';
+                checkoutBtn.disabled = true;
+                
+                // Preparar dados para enviar
+                const orderData = {
+                    product_id: productId,
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    payment_method: selectedPaymentMethod,
+                    number: paymentPhone
+                };
+                
+                // Enviar pedido para o backend
+                fetch('api.php?action=createOrder', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        showMessage('Pedido criado com sucesso! ID do pedido: ' + (data.data.order_id || 'N/A'));
+                    } else {
+                        showMessage('Erro ao processar pedido: ' + (data.message || 'Erro desconhecido'));
+                    }
+                    resetCheckoutButton();
+                })
+                .catch(error => {
+                    showMessage('Erro de conexão: ' + error.message);
+                    resetCheckoutButton();
+                });
+            }
+            
+            function resetCheckoutButton() {
+                checkoutBtn.innerHTML = '<i class="fas fa-lock"></i> Pagar - <span id="checkout-price">' + formatPrice(productData?.price) + ' MZN</span>';
+                checkoutBtn.disabled = false;
+            }
+            
+            function showMessage(message) {
+                messageText.textContent = message;
+                messageModal.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
