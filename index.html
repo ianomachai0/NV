@@ -511,35 +511,57 @@ footer p {
         font-size: 14px;
     }
     
-    .security-ote {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
-    
-    .security-ote i {
-        margin-right: 0;
-    }
-}
-
+/* Substitua o seletor .security-ote atual por este: */
 .security-ote {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px; /* Tamanho reduzido */
+    font-weight: 500;
 }
 
 .security-ote i {
-    color: #28a745; /* Verde */
-    font-size: 35px;
+    color: #28a745;
+    font-size: 28px; /* Tamanho reduzido */
+    margin-right: 5px;
 }
 
 .security-ote span {
     white-space: nowrap;
+    color: #0F4C5C;
 }
 
+/* Ajuste para o cabeçalho */
+header {
+    display: flex;
+    align-items: center;
+    padding: 15px 0; /* Reduzido ligeiramente */
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 25px;
+}
 
+/* Ajuste para o título do header - TAMANHO REDUZIDO */
+.header-title {
+    font-size: 18px; /* Reduzido de 22px */
+    font-weight: 600;
+    color: #0F4C5C;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    .security-ote {
+        font-size: 13px; /* Tamanho reduzido */
+    }
+    
+    .security-ote i {
+        font-size: 24px; /* Tamanho reduzido */
+    }
+    
+    .header-title {
+        font-size: 16px; /* Tamanho reduzido */
+    }
+}
 
 
   </style>
@@ -938,4 +960,4 @@ src="https://www.facebook.com/tr?id=SEU_PIXEL_ID_AQUI&ev=PageView&noscript=1"/>
         });
     </script>
 </body>
-</html>
+                            </html>
